@@ -1,0 +1,20 @@
+<h2> <%= link_to 'New Post', new_post_path %> </h2>
+
+<% @posts.reverse.each do |p| %>
+    <tr>
+      <td> <h3 style="font-weight:bold;text-align:left;">Title: <%= p.title %></h3></td>
+      <td><p style="font-weight:lighter;text-align:left;"><%= p.body %></p></td>
+          <% if current_user %>
+          by <%= p.user.email %>
+          <td><%= link_to 'Edit', edit_post_path(p) %></td>
+          <td><%= link_to 'Show', post_path(p) %></td>
+          <% else %>
+          <% end %>
+<% end %>
+<div></div>
+
+<% if current_user %>
+        <p> <%= link_to 'Go to the secret page', secret_path(p) %> </p>
+        <% else %>
+         u wot
+        <% end %>
